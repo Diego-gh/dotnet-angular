@@ -1,8 +1,8 @@
-@rootURL = http://localhost:5052/api
+@rootURL = http://localhost:5052
 
-GET {{rootURL}}/books
+GET {{rootURL}}/api/books
 Accept: application/json
 
 ###
-POST {{rootURL}}/books
+POST {{rootURL}}/api/books
 Content-Type: application/json
