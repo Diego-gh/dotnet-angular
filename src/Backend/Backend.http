@@ -1,12 +1,8 @@
-@rootURL = http://localhost:5052
+@rootURL = http://localhost:5052/api
 
-GET {{rootURL}}/weatherforecast/
+GET {{rootURL}}/books
 Accept: application/json
 
 ###
-GET {{rootURL}}/api/books
-Accept: application/json
-
-###
-POST {{rootURL}}/api/books
+POST {{rootURL}}/books
 Content-Type: application/json
