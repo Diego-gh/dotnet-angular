@@ -7,17 +7,33 @@ namespace Backend.Controllers
   [Route("api/[controller]")]
   public class CoursesController : ControllerBase
   {
-    private static readonly List<Course> Courses = new List<Course>
-    {
-        new Course { Id = Guid.NewGuid(), Title = "Introduction to Programming", Description = "Learn the basics of programming." },
-        new Course { Id = Guid.NewGuid(), Title = "Advanced Databases", Description = "Deep dive into database systems." },
-        new Course { Id = Guid.NewGuid(), Title = "Web Development", Description = "Build modern web applications." },
-    };
-
     [HttpGet]
     public ActionResult<List<Course>> GetCourses()
     {
-      return Ok(Courses);
+      return Ok(MockDatabase.Courses);
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Course> GetCourse(Guid id)
+    {
+      var course = MockDatabase.Courses.FirstOrDefault(c => c.Id == id);
+      if (course == null)
+      {
+        return NotFound();
+      }
+      return Ok(course);
+    }
+    [HttpPost]
+    public ActionResult<Course> AddCourse(Course newCourse)
+    {
+      if (newCourse == null || string.IsNullOrEmpty(newCourse.Title) || string.IsNullOrEmpty(newCourse.Instructor))
+      {
+        return BadRequest("Invalid course data.");
+      }
+
+      newCourse.Id = Guid.NewGuid();
+      MockDatabase.Courses.Add(newCourse);
+      return CreatedAtAction(nameof(GetCourse), new { id = newCourse.Id }, newCourse);
     }
   }
 }

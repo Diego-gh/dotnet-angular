@@ -1,8 +1,6 @@
 // Create a WebApplication builder with command-line arguments
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 // Register controller services for handling HTTP requests
 builder.Services.AddControllers();
 
