@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace Backend.Models
+namespace Backend.Api.Models
 {
   public class Course
   {

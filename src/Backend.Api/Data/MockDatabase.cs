@@ -1,4 +1,6 @@
-using Backend.Models;
+using Backend.Api.Models;
+
+namespace Backend.Api.Data;
 
 public static class MockDatabase
 {
