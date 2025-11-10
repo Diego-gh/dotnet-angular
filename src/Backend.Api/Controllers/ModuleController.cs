@@ -9,7 +9,7 @@ namespace Backend.Api.Controllers;
 public class ModuleController : ControllerBase
 {
   [HttpGet]
-  public ActionResult<IEnumerable<Module>> GetModules(Guid courseId)
+  public ActionResult<List<Module>> GetModules(Guid courseId)
   {
     var course = MockDatabase.Courses.FirstOrDefault(c => c.Id == courseId);
     if (course == null)
